@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solar-Powered Wet Rice Dryer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- INTRO SCREEN -->
+  <div class="intro" id="intro">
+    <img src="https://i.postimg.cc/B6MCxLfj/logo-removebg-preview.png" alt="Logo" class="logo" />
+    <h1> Solar-Powered Wet Rice Dryer</h1>
+    <p>Smart Automation & Remote Monitoring</p>
+    <button onclick="startApp()"> Get Started</button>
+  </div>
+
+  <!-- MAIN APP -->
+  <div class="app hidden" id="app">
+    <h2> Dryer Control Panel</h2>
+    <p> Current Time: <span id="current-time">--:--:--</span></p>
+
+    <!-- Status Container -->
+    <div class="status-container">
+      <p> Status: <span id="status">OFF</span></p>
+    </div>
+
+    <!-- ON/OFF BUTTONS -->
+    <div class="button-group">
+      <button class="on-btn" onclick="toggleSystem(true)"> Turn ON</button>
+      <button class="off-btn" onclick="toggleSystem(false)"> Turn OFF</button>
+    </div>
+
+    <!-- DRYING CONTROLS -->
+    <div id="drying-controls" class="hidden">
+      <h3> Drying Controls</h3>
+      <div class="button-group">
+        <button class="start-btn" onclick="startDrying()"> Start Drying</button>
+        <button class="stop-btn" onclick="stopDrying()">Stop Drying</button>
+      </div>
+      <p> Drying Status: <span id="drying-status">STOPPED</span></p>
+    </div>
+
+    <!-- USER SET TEMPERATURE & HUMIDITY -->
+    <h3> Set Drying Thresholds</h3>
+    <div class="input-group">
+      <label> Temperature (°C):</label>
+      <input type="number" id="tempInput" value="40">
+      <label> Humidity (%):</label>
+      <input type="number" id="humidityInput" value="50">
+      <button class="set-btn" onclick="setThresholds()"> Set</button>
+    </div>
+
+    <!-- SET DRYING TIME -->
+    <h3> Set Drying Duration</h3>
+    <div class="input-group">
+      <label> Hours:</label>
+      <input type="number" id="hoursInput" min="0" value="0">
+      <label> Minutes:</label>
+      <input type="number" id="minutesInput" min="1" value="5">
+    </div>
+
+    <!-- TIMER -->
+    <h3> Drying Timer</h3>
+    <p> Elapsed Time: <span id="timer">--:--:--</span></p>
+    <p> Start Time: <span id="start-time">--:--:--</span></p>
+    <p> Stop Time: <span id="stop-time">--:--:--</span></p>
+
+    <!-- NOTIFICATION -->
+    <p id="notification"> No notifications yet.</p>
+
+    <!-- SOUND VOLUME CONTROL -->
+    <h3> Volume Control</h3>
+    <input type="range" id="volumeControl" min="0" max="100" value="100" oninput="updateVolume()">
+
+    <!-- Audio for notifications and alerts -->
+    <audio id="notificationSound" src="sound/succeeded-message-tone (3).mp3" preload="auto"></audio>
+    <audio id="alertSound" src=" sound/completed-voice-ringtone (2).mp3" preload="auto"></audio>
+  </div>
+
+  <!-- Load your custom JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
